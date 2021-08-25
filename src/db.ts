@@ -1,4 +1,4 @@
-export let students = [
+export const students = [
   {
     id: '1c25025e-b656-11eb-8529-0242ac130003',
     name: 'Anthony Cole',
@@ -26,7 +26,7 @@ export let students = [
   },
 ];
 
-export let teachers = [
+export const teachers = [
   {
     id: '9c9324e8-b656-11eb-8529-0242ac130003',
     name: 'Ms Jackson',
