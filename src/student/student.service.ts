@@ -20,6 +20,7 @@ export class StudentService {
     return this.students.find((student) => {
       return student.id === studentId;
     });
+
   }
 
   createStudent(payload: CreateStudentDto): StudentResponseDto {
@@ -53,7 +54,6 @@ export class StudentService {
   }
 
   getStudentsByTeacherId(teacherId: string): FindStudentResponseDto[] {
-    console.log('overhere', teacherId);
     return this.students.filter((student) => {
       return student.teacher === teacherId;
     });
