@@ -36,17 +36,45 @@ export class StudentService {
   updateStudent(
     payload: UpdateStudentDto,
     studentId: string,
-  ) {
+  ): StudentResponseDto {
     let updatedStudent: StudentResponseDto;
 
-    const updatedStudentList = this.students.map((student) => {
+    this.students = this.students.map((student) => {
       if (student.id === studentId) {
         updatedStudent = {
           id: studentId,
           ...payload,
         };
+        return updatedStudent;
       } else return student;
     });
-  this.students = updatedStudentList;
+
+    return updatedStudent;
+  }
+
+  getStudentsByTeacherId(teacherId: string): FindStudentResponseDto[] {
+    console.log('overhere', teacherId);
+    return this.students.filter((student) => {
+      return student.teacher === teacherId;
+    });
+  }
+
+  updateStudentTeacher(
+    teacherId: string,
+    studentId: string,
+  ): StudentResponseDto {
+    let updatedStudent: StudentResponseDto;
+
+    this.students.map((student) => {
+      if (student.id === studentId) {
+        updatedStudent = {
+          ...student,
+          teacher: teacherId,
+        };
+        return updatedStudent;
+      } else return student;
+    });
+
+    return updatedStudent;
   }
 }
